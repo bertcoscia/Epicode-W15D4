@@ -2,9 +2,10 @@ package a.albertocoscia;
 
 import a.albertocoscia.dao.EventDAO;
 import a.albertocoscia.dao.LocationDAO;
+import a.albertocoscia.entities.AthleticCompetition;
 import a.albertocoscia.entities.Concert;
-import a.albertocoscia.entities.FootballMatch;
 import a.albertocoscia.entities.Location;
+import a.albertocoscia.entities.Person;
 import a.albertocoscia.enums.ConcertGenre;
 import a.albertocoscia.enums.EventType;
 import com.github.javafaker.Faker;
@@ -33,11 +34,11 @@ public class Application {
         Location teatroBolshoiFromDb = ld.getById("dab7a78a-22b0-4b91-afc3-81b1f101dc23");
         Location stadioDAMFromDb = ld.getById("7551f0ef-b934-45b8-9775-cbe95609bc91");
 
-        FootballMatch partita1 = new FootballMatch("Roma-Napoli", "Partita di Serie A", 50000, EventType.PUBBLICO, stadioOlimpicoFromDb, "Roma", "Napoli", 1, 3);
+        /*FootballMatch partita1 = new FootballMatch("Roma-Napoli", "Partita di Serie A", 50000, EventType.PUBBLICO, stadioOlimpicoFromDb, "Roma", "Napoli", 1, 3);
         partita1.setVincitore("Napoli");
         FootballMatch partita2 = new FootballMatch("Napoli - Juventus", "Partita di Serie A", 45000, EventType.PUBBLICO, stadioDAMFromDb, "Napoli", "Juventus", 1, 0);
         partita2.setVincitore("Napoli");
-        FootballMatch partita3 = new FootballMatch("Lazio-Roma", "Partita di Serie A", 50000, EventType.PUBBLICO, stadioOlimpicoFromDb, "Lazio", "Roma", 2, 2);
+        FootballMatch partita3 = new FootballMatch("Lazio-Roma", "Partita di Serie A", 50000, EventType.PUBBLICO, stadioOlimpicoFromDb, "Lazio", "Roma", 2, 2);*/
         //ed.save(partita1);
         //ed.save(partita2);
         //ed.save(partita3);
@@ -49,10 +50,6 @@ public class Application {
         //ed.save(concerto2);
         //ed.save(concerto3);
 
-
-        System.out.println(ed.findConcertByGenre(ConcertGenre.CLASSICO));
-        System.out.println(ed.getPartiteVinteInTrasferta());
-        System.out.println(ed.getPartiteVinteInCasa());
-        System.out.println(ed.getPartitePareggiate());
+        Person sergioMattare
     }
 }

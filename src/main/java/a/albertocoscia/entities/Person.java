@@ -20,6 +20,10 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private PersonGender gender;
 
+    @ManyToOne
+    @JoinColumn(name = "athletic_competition_id")
+    private AthleticCompetition athleticCompetition;
+
     public Person() {
     }
 
