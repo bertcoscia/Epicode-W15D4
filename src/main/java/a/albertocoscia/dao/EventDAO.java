@@ -75,4 +75,14 @@ public class EventDAO {
         query.setParameter("genre", genre);
         return query.getResultList();
     }*/
+
+    public List<FootballMatch> getPartiteVinteInCasa() {
+        TypedQuery<FootballMatch> query = em.createNamedQuery("getPartiteVinteInCasa", FootballMatch.class);
+        return query.getResultList();
+    }
+
+    public List<FootballMatch> getPartiteVinteInTrasferta() {
+        TypedQuery<FootballMatch> query = em.createNamedQuery("getPartiteVinteInTrasferta", FootballMatch.class);
+        return query.getResultList();
+    }
 }

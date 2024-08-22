@@ -2,10 +2,15 @@ package a.albertocoscia.entities;
 
 import a.albertocoscia.enums.EventType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "partita_di_calcio")
+
+@NamedQuery(name = "getPartiteVinteInCasa", query = "SELECT fm FROM FootballMatch fm WHERE fm.vincitore = fm.squadra_casa")
+@NamedQuery(name = "getPartiteVinteInTrasferta", query = "SELECT fm FROM FootballMatch fm WHERE fm.vincitore = fm.squadra_ospite")
+
 public class FootballMatch extends Event {
     private String squadra_casa;
     private String squadra_ospite;

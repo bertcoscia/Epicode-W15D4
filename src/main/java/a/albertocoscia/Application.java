@@ -27,13 +27,18 @@ public class Application {
         Location stadioOlimpico = new Location("Roma", "Stadio Olimpico");
         Location rockEnSeine = new Location("Paris", "Rock en Seine");
         Location teatroBolshoi = new Location("Moscow", "Teatro Bol'šoj");
+        Location stadioDAM = new Location("Napoli", "Stadio Diego Armando Maradona");
         Location stadioOlimpicoFromDb = ld.getById("ed81bdf2-ba78-4da7-a500-b98ab10c5799");
         Location rockEnSeineFromDb = ld.getById("6f7b2bf1-7cf0-4908-8589-9a765917ce0c");
         Location teatroBolshoiFromDb = ld.getById("dab7a78a-22b0-4b91-afc3-81b1f101dc23");
+        Location stadioDAMFromDb = ld.getById("7551f0ef-b934-45b8-9775-cbe95609bc91");
 
         FootballMatch partita1 = new FootballMatch("Roma-Napoli", "Partita di Serie A", 50000, EventType.PUBBLICO, stadioOlimpicoFromDb, "Roma", "Napoli", 1, 3);
         partita1.setVincitore("Napoli");
+        FootballMatch partita2 = new FootballMatch("Napoli - Juventus", "Partita di Serie A", 45000, EventType.PUBBLICO, stadioDAMFromDb, "Napoli", "Juventus", 1, 0);
+        partita2.setVincitore("Napoli");
         //ed.save(partita1);
+        //ed.save(partita2);
 
         Concert concerto1 = new Concert("Concerto Fred Again..", "Musica bella", 15000, EventType.PUBBLICO, rockEnSeineFromDb, ConcertGenre.POP, false);
         Concert concerto2 = new Concert("Concerto U2", "Musica molto, molto bella", 65000, EventType.PUBBLICO, stadioOlimpicoFromDb, ConcertGenre.ROCK, true);
@@ -44,5 +49,7 @@ public class Application {
 
 
         System.out.println(ed.findConcertByGenre(ConcertGenre.CLASSICO));
+        System.out.println(ed.getPartiteVinteInTrasferta());
+        System.out.println(ed.getPartiteVinteInCasa());
     }
 }
