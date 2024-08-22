@@ -10,6 +10,7 @@ import jakarta.persistence.Table;
 
 @NamedQuery(name = "getPartiteVinteInCasa", query = "SELECT fm FROM FootballMatch fm WHERE fm.vincitore = fm.squadra_casa")
 @NamedQuery(name = "getPartiteVinteInTrasferta", query = "SELECT fm FROM FootballMatch fm WHERE fm.vincitore = fm.squadra_ospite")
+@NamedQuery(name = "getPartitePareggiate", query = "SELECT fm FROM FootballMatch fm WHERE fm.vincitore IS NULL")
 
 public class FootballMatch extends Event {
     private String squadra_casa;

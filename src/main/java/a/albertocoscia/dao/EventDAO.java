@@ -85,4 +85,9 @@ public class EventDAO {
         TypedQuery<FootballMatch> query = em.createNamedQuery("getPartiteVinteInTrasferta", FootballMatch.class);
         return query.getResultList();
     }
+
+    public List<FootballMatch> getPartitePareggiate() {
+        TypedQuery<FootballMatch> query = em.createNamedQuery("getPartitePareggiate", FootballMatch.class);
+        return query.getResultList();
+    }
 }

@@ -37,8 +37,10 @@ public class Application {
         partita1.setVincitore("Napoli");
         FootballMatch partita2 = new FootballMatch("Napoli - Juventus", "Partita di Serie A", 45000, EventType.PUBBLICO, stadioDAMFromDb, "Napoli", "Juventus", 1, 0);
         partita2.setVincitore("Napoli");
+        FootballMatch partita3 = new FootballMatch("Lazio-Roma", "Partita di Serie A", 50000, EventType.PUBBLICO, stadioOlimpicoFromDb, "Lazio", "Roma", 2, 2);
         //ed.save(partita1);
         //ed.save(partita2);
+        //ed.save(partita3);
 
         Concert concerto1 = new Concert("Concerto Fred Again..", "Musica bella", 15000, EventType.PUBBLICO, rockEnSeineFromDb, ConcertGenre.POP, false);
         Concert concerto2 = new Concert("Concerto U2", "Musica molto, molto bella", 65000, EventType.PUBBLICO, stadioOlimpicoFromDb, ConcertGenre.ROCK, true);
@@ -51,5 +53,6 @@ public class Application {
         System.out.println(ed.findConcertByGenre(ConcertGenre.CLASSICO));
         System.out.println(ed.getPartiteVinteInTrasferta());
         System.out.println(ed.getPartiteVinteInCasa());
+        System.out.println(ed.getPartitePareggiate());
     }
 }
