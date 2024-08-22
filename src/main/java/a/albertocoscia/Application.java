@@ -2,16 +2,20 @@ package a.albertocoscia;
 
 import a.albertocoscia.dao.EventDAO;
 import a.albertocoscia.dao.LocationDAO;
+import a.albertocoscia.dao.PersonDAO;
 import a.albertocoscia.entities.AthleticCompetition;
 import a.albertocoscia.entities.Concert;
 import a.albertocoscia.entities.Location;
 import a.albertocoscia.entities.Person;
 import a.albertocoscia.enums.ConcertGenre;
 import a.albertocoscia.enums.EventType;
+import a.albertocoscia.enums.PersonGender;
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
+import java.time.LocalDate;
 
 public class Application {
 
@@ -24,6 +28,7 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         EventDAO ed = new EventDAO(em);
         LocationDAO ld = new LocationDAO(em);
+        PersonDAO pd = new PersonDAO(em);
 
         Location stadioOlimpico = new Location("Roma", "Stadio Olimpico");
         Location rockEnSeine = new Location("Paris", "Rock en Seine");
@@ -50,6 +55,18 @@ public class Application {
         //ed.save(concerto2);
         //ed.save(concerto3);
 
-        Person sergioMattare
+        Person sergioMattarella = new Person(PersonGender.M, "Sergio", "Mattarella", "sergio@mattarella.it", LocalDate.of(1943, 7, 23));
+        Person gerryScotti = new Person(PersonGender.M, "Gerry", "Scotti", "gerry@scotti.it", LocalDate.of(1956, 8, 7));
+        Person gerryScottiFromDb = pd.getById("585ed996-9852-42ed-803e-6d65f3fc5e4f");
+        Person sergioMattarellaFromDb = pd.getById("83fb2b54-9db5-49d9-881f-fc75155b198a");
+
+        AthleticCompetition gara1 = new AthleticCompetition("Golden Gala", "Gala annuale di atletica leggera", 45000, EventType.PUBBLICO, stadioOlimpicoFromDb, sergioMattarellaFromDb);
+        AthleticCompetition gara1FromDb = ed.findCompetitionById("eeeef6ef-d009-40a1-a60b-76990d2c47ca");
+        gara1FromDb.addAtleta(sergioMattarellaFromDb);
+        gara1FromDb.addAtleta(gerryScottiFromDb);
+        //ed.save(gara1FromDb);
+
+        System.out.println(ed.findCompetitionById("eeeef6ef-d009-40a1-a60b-76990d2c47ca"));
+
     }
 }

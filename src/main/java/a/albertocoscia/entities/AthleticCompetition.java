@@ -11,7 +11,7 @@ import java.util.Set;
 public class AthleticCompetition extends Event {
 
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "vincitore_id", nullable = false)
     private Person vincitore;
 
     @OneToMany(mappedBy = "athleticCompetition")
@@ -20,10 +20,10 @@ public class AthleticCompetition extends Event {
     public AthleticCompetition() {
     }
 
-    public AthleticCompetition(String titolo, String descrizione, int maxPax, EventType tipo, Location location, Person vincitore /*Set<Person> setAtleti*/) {
+    public AthleticCompetition(String titolo, String descrizione, int maxPax, EventType tipo, Location location, Person vincitore) {
         super(titolo, descrizione, maxPax, tipo, location);
         this.vincitore = vincitore;
-        /*this.setAtleti = setAtleti != null ? setAtleti : new HashSet<>();*/
+        this.setAtleti = new HashSet<>();
     }
 
     public Person getVincitore() {
@@ -34,7 +34,7 @@ public class AthleticCompetition extends Event {
         this.vincitore = vincitore;
     }
 
-    /*public Set<Person> getSetAtleti() {
+    public Set<Person> getSetAtleti() {
         return setAtleti;
     }
 
@@ -52,5 +52,14 @@ public class AthleticCompetition extends Event {
 
     public void removeAtleta(Person atleta) {
         this.setAtleti.remove(atleta);
-    }*/;
+    }
+
+    @Override
+    public String toString() {
+        return "AthleticCompetition{" +
+                "eventDetails=" + super.toString() +
+                ", vincitore=" + vincitore +
+                ", setAtleti=" + setAtleti +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package a.albertocoscia.dao;
 
+import a.albertocoscia.entities.AthleticCompetition;
 import a.albertocoscia.entities.Concert;
 import a.albertocoscia.entities.Event;
 import a.albertocoscia.entities.FootballMatch;
@@ -89,5 +90,11 @@ public class EventDAO {
     public List<FootballMatch> getPartitePareggiate() {
         TypedQuery<FootballMatch> query = em.createNamedQuery("getPartitePareggiate", FootballMatch.class);
         return query.getResultList();
+    }
+
+    public AthleticCompetition findCompetitionById(String competitionId) {
+        AthleticCompetition found = em.find(AthleticCompetition.class, UUID.fromString(competitionId));
+        if (found == null) throw new NotFoundException(competitionId);
+        return found;
     }
 }

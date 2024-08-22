@@ -22,11 +22,11 @@ public class FootballMatch extends Event {
     public FootballMatch() {
     }
 
-    public FootballMatch(String titolo, String descrizione, int maxPax, EventType tipo, Location location, String squadra_casa, String squadra_ospite, String vincitore, int gol_casa, int gol_ospite) {
+    public FootballMatch(String titolo, String descrizione, int maxPax, EventType tipo, Location location, String squadra_casa, String squadra_ospite, int gol_casa, int gol_ospite) {
         super(titolo, descrizione, maxPax, tipo, location);
         this.squadra_casa = squadra_casa;
         this.squadra_ospite = squadra_ospite;
-        this.vincitore = vincitore;
+        this.vincitore = null;
         this.gol_casa = gol_casa;
         this.gol_ospite = gol_ospite;
     }
