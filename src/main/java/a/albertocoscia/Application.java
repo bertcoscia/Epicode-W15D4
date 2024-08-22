@@ -43,6 +43,6 @@ public class Application {
         //ed.save(concerto3);
 
 
-        System.out.println(ed.findAllConcertsInStreaming(false));
+        System.out.println(ed.findConcertByGenre(ConcertGenre.CLASSICO));
     }
 }

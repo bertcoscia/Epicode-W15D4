@@ -3,12 +3,15 @@ package a.albertocoscia.dao;
 import a.albertocoscia.entities.Concert;
 import a.albertocoscia.entities.Event;
 import a.albertocoscia.entities.FootballMatch;
+import a.albertocoscia.enums.ConcertGenre;
 import a.albertocoscia.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class EventDAO {
@@ -57,4 +60,19 @@ public class EventDAO {
         query.setParameter("condition", condition);
         return query.getResultList();
     }
+
+    public Map<ConcertGenre, List<Concert>> findConcertByGenre(ConcertGenre genre) {
+        TypedQuery<Concert> query = em.createQuery("SELECT c FROM Concert c WHERE c.genere = :genre", Concert.class);
+        query.setParameter("genre", genre);
+        List<Concert> resultList = query.getResultList();
+        Map<ConcertGenre, List<Concert>> resultMap = new HashMap<ConcertGenre, List<Concert>>();
+        resultMap.put(genre, resultList);
+        return resultMap;
+    }
+
+    /*public List<Concert> findConcertByGenre(ConcertGenre genre) {
+        TypedQuery<Concert> query = em.createQuery("SELECT c FROM Concert c WHERE c.genre = :genre", Concert.class);
+        query.setParameter("genre", genre);
+        return query.getResultList();
+    }*/
 }
