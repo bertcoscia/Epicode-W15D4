@@ -1,5 +1,6 @@
 package a.albertocoscia.dao;
 
+import a.albertocoscia.entities.Concert;
 import a.albertocoscia.entities.Event;
 import a.albertocoscia.entities.FootballMatch;
 import a.albertocoscia.exceptions.NotFoundException;
@@ -48,6 +49,12 @@ public class EventDAO {
 
     public List<FootballMatch> findAllFootballMatches() {
         TypedQuery<FootballMatch> query = em.createQuery("SELECT fm FROM FootballMatch fm", FootballMatch.class);
+        return query.getResultList();
+    }
+
+    public List<Concert> findAllConcertsInStreaming(boolean condition) {
+        TypedQuery<Concert> query = em.createQuery("SELECT c FROM Concert c WHERE c.inStreaming = :condition", Concert.class);
+        query.setParameter("condition", condition);
         return query.getResultList();
     }
 }
